@@ -12,10 +12,21 @@ const firstCommand = args[2];
 if (args.length < 3 || !commands.filter((c) => c === firstCommand)[0]) {
   console.log("Command not matched \n");
   console.log("Usage: express-template", ...commands, "\n");
+  process.exit();
 }
 
-if (firstCommand === "init") {
-  const init = new InitCommand();
+const projectName = args
+  .filter((a) => a.includes("--name"))[0]
+  ?.split("--name=")[1];
 
-  init.init();
+if (firstCommand === "init") {
+  if (!projectName) {
+    console.log("--name is required", "\n");
+    process.exit();
+  }
+
+  const init = new InitCommand();
+  init.init(projectName).then(() => {
+    process.exit(0);
+  });
 }

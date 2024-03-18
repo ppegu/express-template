@@ -4,13 +4,14 @@
   "type": "module",
   "devDependencies": {
     "@types/bun": "latest",
-    "@types/inquirer": "^9.0.7"
+    "@types/inquirer": "^9.0.7",
+    "prettier": "^3.2.5"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
   "bin": {
-    "ppegu-express-template": "src/index.ts"
+    "ppegu-express-template": "./generator.sh"
   },
   "scripts": {
     "template": "ppegu-express-template"
