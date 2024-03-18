@@ -1,0 +1,14 @@
+{
+    "apps": [
+        {
+            "name": "server",
+            "script": "bun",
+            "args": "index.js",
+            "env": {
+                "NODE_ENV": "production",
+                "PORT": 8000,
+                "MONGO_URI": "mongodb://user:password@127.0.0.1:27017/db-name"
+            }
+        }
+    ]
+}

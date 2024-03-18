@@ -1,0 +1,21 @@
+{
+  "name": "@ppegu/express-template",
+  "module": "src/index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/inquirer": "^9.0.7"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "bin": {
+    "ppegu-express-template": "src/index.ts"
+  },
+  "scripts": {
+    "template": "ppegu-express-template"
+  },
+  "dependencies": {
+    "inquirer": "^9.2.16"
+  }
+}
