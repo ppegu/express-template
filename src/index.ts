@@ -15,18 +15,9 @@ if (args.length < 3 || !commands.filter((c) => c === firstCommand)[0]) {
   process.exit();
 }
 
-const projectName = args
-  .filter((a) => a.includes("--name"))[0]
-  ?.split("--name=")[1];
-
 if (firstCommand === "init") {
-  if (!projectName) {
-    console.log("--name is required", "\n");
-    process.exit();
-  }
-
   const init = new InitCommand();
-  init.init(projectName).then(() => {
+  init.init().then(() => {
     process.exit(0);
   });
 }

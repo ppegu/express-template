@@ -1,22 +1,28 @@
 {
   "name": "@ppegu/express-template",
+  "version": "0.0.5-beta",
   "module": "src/index.ts",
   "type": "module",
   "devDependencies": {
     "@types/bun": "latest",
-    "@types/inquirer": "^9.0.7",
-    "prettier": "^3.2.5"
+    "@types/inquirer": "^9.0.7"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
   "bin": {
-    "ppegu-express-template": "./generator.sh"
+    "generate": "./src/index.ts"
   },
   "scripts": {
-    "template": "ppegu-express-template"
+    "template": "generate"
   },
   "dependencies": {
-    "inquirer": "^9.2.16"
+    "inquirer": "^9.2.16",
+    "prettier": "^3.2.5"
+  },
+  "author": {
+    "url": "https://github.com/ppegu",
+    "email": "pranpegu997@gmail.com",
+    "name": "Pran pegu"
   }
 }

@@ -1,4 +1,3 @@
-import { exec } from "child_process";
 import fs from "fs";
 import inquirer from "inquirer";
 import path from "path";
@@ -6,15 +5,17 @@ import prettier from "prettier";
 import Template from "./template.util";
 
 export type ProjectInfo = {
-  "project-name": string;
+  projectName: string;
   language: string;
 };
 
 export default class InitCommand {
-  projectName = "";
-
   async askProjectInfo(): Promise<ProjectInfo> {
     const answers = await inquirer.prompt([
+      {
+        name: "projectName",
+        message: "Project name :",
+      },
       {
         name: "language",
         message: "select language :",
@@ -23,7 +24,7 @@ export default class InitCommand {
       },
     ]);
 
-    return { ...answers, "project-name": this.projectName };
+    return { ...answers };
   }
 
   generatePackageJson(info: ProjectInfo) {
@@ -39,7 +40,7 @@ export default class InitCommand {
 
     const packageJson = JSON.parse(packageJsonString);
 
-    packageJson.name = info["project-name"];
+    packageJson.name = info.projectName;
 
     return JSON.stringify(packageJson);
   }
@@ -47,11 +48,11 @@ export default class InitCommand {
   async generateProject(info: ProjectInfo) {
     const templateDir = path.join(__dirname, "../templates", info.language);
 
-    const projectPath = info["project-name"];
+    const projectPath = info.projectName;
 
     if (fs.existsSync(projectPath)) {
-      console.log(`${projectPath} already exists.`);
-      return;
+      console.error(`\nerror: ${projectPath} already exists 😬😬.\n`);
+      process.exit();
     }
 
     console.log(`generating ${info.language} project...`);
@@ -72,9 +73,12 @@ export default class InitCommand {
     );
   }
 
-  async init(projectName: string) {
-    this.projectName = projectName;
+  async init() {
     const info = await this.askProjectInfo();
     await this.generateProject(info);
+
+    console.log("Done!😎 Happy coding😍😍😍. \n");
+
+    console.log(`cd ${info.projectName} and run "bun install" to get start.\n`);
   }
 }

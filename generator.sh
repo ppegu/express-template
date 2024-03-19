@@ -3,6 +3,8 @@
 set -e
 
 
+pwd
+
 read -p "Project name : " name
 
 ./src/index.ts "$@" --name=$name 
