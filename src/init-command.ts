@@ -55,7 +55,7 @@ export default class InitCommand {
       process.exit();
     }
 
-    console.log(`generating ${info.language} project...`);
+    console.log(`Generating ${info.language} project 🥵🥵`);
 
     fs.mkdirSync(projectPath, { recursive: true });
 

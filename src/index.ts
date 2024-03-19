@@ -10,7 +10,7 @@ const commands = ["init"];
 const firstCommand = args[2];
 
 if (args.length < 3 || !commands.filter((c) => c === firstCommand)[0]) {
-  console.log("Command not matched \n");
+  console.log("Command not matched 😇😇\n");
   console.log("Usage: express-template", ...commands, "\n");
   process.exit();
 }
