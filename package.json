@@ -1,6 +1,6 @@
 {
   "name": "@ppegu/express-template",
-  "version": "0.0.5-beta",
+  "version": "1.0.0",
   "module": "src/index.ts",
   "type": "module",
   "devDependencies": {
